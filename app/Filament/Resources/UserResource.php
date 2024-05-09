@@ -17,7 +17,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $modelLabel = "الطالب";
 
@@ -71,13 +71,9 @@ class UserResource extends Resource
                         'user' => 'warning',
                     }),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('تاريخ الإنضمام')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->since()
             ])
             ->filters([
                 //
